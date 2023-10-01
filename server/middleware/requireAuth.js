@@ -1,6 +1,14 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 
+/**
+ * Verifies authentication and authorizes the request.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @return {Promise<void>} Returns a promise that resolves to undefined.
+ */
 const requireAuth = async (req, res, next) => {
     
     //verify authentication

@@ -1,11 +1,26 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 
+/**
+ * Creates a token for a given ID.
+ *
+ * @param {string} _id - The ID used to create the token.
+ * @return {string} The generated token.
+ */
 const createToken = (_id) => {
   return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
 }
 
-// login a user
+/**
+ * Login user with email and password
+ * @function
+ * @async
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {string} req.body.email - User's email
+ * @param {string} req.body.password - User's password
+ * @returns {Object} - Returns email and token if successful, or error message if failed
+ */
 const loginUser = async (req, res) => {
   const {email, password} = req.body
 
@@ -21,8 +36,13 @@ const loginUser = async (req, res) => {
   }
 }
 
-// signup a user
 const signupUser = async (req, res) => {
+/**
+ * Sign up a user with the provided email and password.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Object} - The response object with the user's email and token.
+ */
   const {email, password} = req.body
 
   try {

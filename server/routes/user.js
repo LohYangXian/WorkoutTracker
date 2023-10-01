@@ -5,10 +5,18 @@ const { loginUser, signupUser } = require('../controllers/userController')
 
 const router = express.Router()
 
-// login route
+/**
+ * @route POST /login
+ * @description Login user
+ * @access Public
+ */
 router.post('/login', loginUser)
 
-// signup route
+/**
+ * @route POST /signup
+ * @description Signup user
+ * @access Public
+ */
 router.post('/signup', signupUser)
 
 module.exports = router
